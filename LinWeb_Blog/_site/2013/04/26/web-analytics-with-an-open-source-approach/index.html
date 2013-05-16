@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0" />
+
+  <!-- (1) Moot look and feel -->
+  <link rel="stylesheet" href="http://cdn.moot.it/1.2.3/moot.css"/>
+
+  <title>LinWeb | Analytics - With an Open Source Approach</title>
+
+  <meta name='robots' content='index, follow' />
+
+  
+  <meta name="description" content="Web Analytics is something which all Website Administrators seek for. However, rarely do we find something which is entirely under our control. Piwik is one tool which changes this situation and gives the reins of web analytics into your very hands." />
+  
+
+   
+  <meta name="tags" content="analytics,piwik,open,source,self,hosted" />
+  
+
+
+  
+  <meta name="keywords" content="" />
+  
+
+  
+  <meta http-equiv="date" content="Friday, 26  2013 00:00:00 GMT" />
+  
+
+  <!-- (1) Moot depends on jQuery v1.7 or greater -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <!-- (1) Moot client application -->
+  <script src="http://cdn.moot.it/1.2.3/moot.min.js"></script>
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+
+  <link rel="stylesheet" href="/stylesheets/blog.css" />
+  <!-- Piwik -->
+  <script type="text/javascript"> 
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.linweb.tk//";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 1]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+      g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+  </script>
+  <noscript><p><img src="http://analytics.linweb.tk/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+</head>
+<body>
+  <div class="container">
+    <div class='cover-page'>
+        <nav>
+            <ul class='inline-list no-bullet'>
+                <li><a href="http://blog.linweb.tk">Home</a></li>
+                <li><a href="http://blog.linweb.tk/archive">Archive</a></li>
+                <li><a href="http://blog.linweb.tk/contact">Contact</a></li>
+                <li><a href="http://blog.linweb.tk/offers">Offers</a></li>
+            </ul>
+        </nav>
+        <div class='blog-icon'>
+            <h1 class="icon-pencil"></h1>
+        </div>
+    </div>
+
+    <div class='colored-bar'>
+        <div class='bar1'></div>
+        <div class='bar2'></div>
+        <div class='bar3'></div>
+        <div class='bar4'></div>
+        <div class='bar5'></div>
+    </div>
+
+    <div class="message-window">
+        <div class="subscribe">
+            <h4>Like what you read? Then do subscribe to the RSS Feed of this blog!</h4>
+            <a target="_blank" href="http://www.feedly.com/home#subscription/feed/http://blog.linweb.tk/rss.xml"><img src="/images/feedly.png"></a>
+        </div>
+    </div>
+
+    <div class='content-container'>
+
+
+
+
+
+<div class='post-contents'>
+	<h5 class='page-date'>26 April 2013</h5>
+	<h2 class='page-title'><a href="/2013/04/26/web-analytics-with-an-open-source-approach/">Analytics - With an Open Source Approach</a></h2>
+	<div class='page-content'><h4>What is Web Analytics?</h4>
+
+<p>A very trivial matter to explain, however, there may be few who wouldn't know about it. In brief, Web Analytics is a tool which lets a website administrator know who visits his/her website, how many times the visit occurs, which pages get the maximum number of visitors, which keyword searches led to the visitor opening the website, which social network website referred the vistor to get there, how much time a visitor spends on a specific page and so on.</p>
+
+<p>Web Analytics lets the admin set specific goals too, viz-a-viz, turning the visits into monetary goals, reaching a specific number of visits etc.</p>
+
+<h4>Why we need Web Analytics?</h4>
+
+<p>Web Analytics helps an admin to reach goals, see which pages generate most interest, which keywords lead to most hits etc. and in turn she must decide how new content is to be generated so that more vistors are gained. This is very important in today's internet where hundreds of websites dealing with niche topics pop up everyday. So basically there's too much competition to deal with. And only proper tracking of users' interest will help in gaining more visitors and eventually more monetization of the website.</p>
+
+<h4>What we have in general...</h4>
+
+<p>There are a number of Web Analytics service available - both free and paid. The most common ones are:</p>
+
+<ol>
+<li><p><a href="http://analytics.google.com">Google Analytics</a></p></li>
+<li><p><a href="http://clicky.com/">Clicky</a></p></li>
+<li><p><a href="http://haveamint.com">Mint</a></p></li>
+<li><p><a href="http://kissmetrics.com">KISSmetrics</a></p></li>
+<li><p><a href="http://openwebanalytics.com/">Open Web Analytics</a></p></li>
+</ol>
+
+
+<h4>If so many are already available... WHY Piwik?</h4>
+
+<p>It is pretty common for people to ask this. But I think Piwik is for the ones whos want full control (Yes. I am a control freak.). I used to be a fan of Google Nalytics, but I moved to Piwik recently. While Google Analytics is no doubt one of the best, if not the best, web analytics services of all time. One doesn't need to worry about servers, upgrades or bacups. All you gotta do is simply login and use it. It has got integrations like social media, advanced graphics like flow reports, in-page analytics, Google Experiments etc.</p>
+
+<p>However, the limitations are rarely highlighted. If ou have ever used it, you must have noticed the analytics are late to show up. The analytics were always shown at least a dozen hours late for me. Moreover, Google Analytics is closed. And there have been repeated complaints regarding tracking the users without their permissions. Moreover, I am not a big fan of companies who track my visitors interests to put up ads at their faces. And I have a soft corner for open source projects. So, I moved to Piwik.</p>
+
+<p><img src="/images/analytics-an-open-source-approach/piwik.jpg"></p>
+
+<p>Piwik supports almost all the things Google Analytics does right out of the box. And in some ways, it does better.</p>
+
+<ul>
+<li>All standard statistics reports: top keywords and search engines, websites, top page URLs, page titles, user countries, providers, operating system, browser marketshare, screen resolution, Desktop VS Mobile, engagement (time on site, pages per visit, repeated visits), top campaigns, custom variables, top entry/exit pages,  downloaded files, and many more, classified into four main analytics report categories – Visitors, Actions, Referrers, Goals/Ecommerce (30+ reports)</li>
+<li>Real time data updates - My favorite</li>
+<li>Detailed view of visitors</li>
+<li>Ecommerce support</li>
+<li>Goal Conversion tracking</li>
+<li>Tracking Custom Variables</li>
+<li>World map of visitors</li>
+<li>Automatic file download tracking</li>
+<li>Tracking of 404</li>
+<li>Campaign tracking</li>
+<li>More than 800 Search Engines tracked</li>
+<li>Scheduled email reports</li>
+<li>Embedding reports in app or website</li>
+</ul>
+
+
+<p>The ones I love most:
+* Unlimited users
+* Unlimited websites
+* Owning all the data
+* Paying heed to privacy concerns of visitors
+* User privelege
+* Options for White Labelling Piwik</p>
+
+<p>Laws in certain places prohibit tracking of user IPs. Piwik has support for anonymising IPs. So privacy concerns are well met.</p>
+
+<p>Integrating Piwik with CMSs is very easy too. There are plugins available for 40+ CMS, web frameworks or Ecommerce shops.</p>
+
+<p>Community support is also great, as expected from Open Source communities.</p>
+
+<p>However, there is a pitfall to using Piwik. Not many people enjoy the agony of hosting, updating and maintaining their own hosted analytics solution. However, if you are one of those who love freedom, then read ahead.</p>
+
+<h4>How to install Piwik on a server</h4>
+
+<p>The minimum requirements are:</p>
+
+<ul>
+<li>Webserver</li>
+<li>PHP version 5.1.3 or greater</li>
+<li>MYSQL version 4.1 or greater</li>
+<li>PHP extensions pdo and pdo_mysql ot mysqli enabled</li>
+</ul>
+
+
+<p>More information regarding configuration can be found <a href="http://piwik.org/docs/requirements/">here</a></p>
+
+<p>First you need to setup a database for Piwik to use. I recommend creating a separate user for Piwik and give the user permissions over the database.</p>
+
+<p>If you have SSH access to your server, then SSH into it and download the latest Piwik release from <a href="http://builds.piwik.org/latest.zip">http://builds.piwik.org/latest.zip</a>.
+Unzip the file and keep the folder <span class='word_highlight'>piwik</span> and delete the rest.</p>
+
+<p>You can upload the folder using FTP as well.</p>
+
+<p>If you have uploaded the folder to a subdirectory in your domain, then go to: <span class="word_highlight">http://yourdomain.com/piwik</span>.</p>
+
+<p>Now all you have to do is follow the instructions. It'll be a walk in the park. So, I won't explain any further. You should explore yourself.</p>
+
+<p>I have a <a href="http://analytics.linweb.tk">hosted Piwik installation</a> on my server. I am giving away free logins to interested people. If you want to try out Piwik for your own websites, all you have to do is <a href="mailto:sumit@linweb.tk">mail me</a> with the address of your website and your name.</p>
+
+<p>I'll send you the login once I've reviewed your request.</p>
+
+<p>Do leave a comment below if you have anything more to add.</p>
+</div>
+	<div class='horizontal-divider'> </div>
+</div>
+
+	<div class='panel author' itemscope="" itemtype="http://schema.org/Person">
+        <div class='circular-img'><img class="author-img" itemprop="image" src="/images/sumit.jpg" alt="Sumit Sarkar"></div>
+        <h2><span itemprop="name">Sumit Sarkar</span></h2>
+        <h3><span itemprop="jobTitle">Designer &amp; Linux System Administrator</span></h3>
+        <p><span>Connect with the Author:<span> <a rel="me" name="google_profile" itemprop="url" href="https://plus.google.com/116690828010534377774?rel=author" target="_blank" title="Follow Me on Google+">Google+</a> | <a rel="me" name="twitter_profile" itemprop="url" href="https://twitter.com/sumitdurd3n" target="_blank" title="Follow Me on Twitter">Twitter</a></p>
+        <div itemprop="description">
+          <p>Sumit Sarkar is a Web Designer and a Linux Server Admin. He is extremely eager to learn new things and doing so everyday.</p>
+        </div>
+    </div>
+		      
+		</div>
+
+		
+		<div class="comment-container">
+			<div class="horizontal-divider"></div>
+			<div class="comment-system">		
+				<h4 class='comment-title'>Write your <span class='special'>comments</span> down here. The JavaScript should be turned on for this to work!</h4>
+	        	<a class="moot" data-label="Your feedback here..." href="http://api.moot.it/linweb/blog//2013/04/26/web-analytics-with-an-open-source-approach/"></a>
+			</div>
+		</div>
+
+	</div>
+  
+</body>
+</html>

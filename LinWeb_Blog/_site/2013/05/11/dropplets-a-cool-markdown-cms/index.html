@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0" />
+
+  <!-- (1) Moot look and feel -->
+  <link rel="stylesheet" href="http://cdn.moot.it/1.2.3/moot.css"/>
+
+  <title>LinWeb | Dropplets - A Wicked Cool Markdown CMS</title>
+
+  <meta name='robots' content='index, follow' />
+
+  
+  <meta name="description" content="Bloggers need simplicity. Complex dashboards are a total turnoff for anyone who just wants to write a blog post. Maybe it's time for something simpler." />
+  
+
+   
+  <meta name="tags" content="dropplets,blog,markdown,cms" />
+  
+
+
+  
+  <meta name="keywords" content="" />
+  
+
+  
+  <meta http-equiv="date" content="Saturday, 11  2013 00:00:00 GMT" />
+  
+
+  <!-- (1) Moot depends on jQuery v1.7 or greater -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <!-- (1) Moot client application -->
+  <script src="http://cdn.moot.it/1.2.3/moot.min.js"></script>
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+
+  <link rel="stylesheet" href="/stylesheets/blog.css" />
+  <!-- Piwik -->
+  <script type="text/javascript"> 
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.linweb.tk//";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 1]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+      g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+  </script>
+  <noscript><p><img src="http://analytics.linweb.tk/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+</head>
+<body>
+  <div class="container">
+    <div class='cover-page'>
+        <nav>
+            <ul class='inline-list no-bullet'>
+                <li><a href="http://blog.linweb.tk">Home</a></li>
+                <li><a href="http://blog.linweb.tk/archive">Archive</a></li>
+                <li><a href="http://blog.linweb.tk/contact">Contact</a></li>
+                <li><a href="http://blog.linweb.tk/offers">Offers</a></li>
+            </ul>
+        </nav>
+        <div class='blog-icon'>
+            <h1 class="icon-pencil"></h1>
+        </div>
+    </div>
+
+    <div class='colored-bar'>
+        <div class='bar1'></div>
+        <div class='bar2'></div>
+        <div class='bar3'></div>
+        <div class='bar4'></div>
+        <div class='bar5'></div>
+    </div>
+
+    <div class="message-window">
+        <div class="subscribe">
+            <h4>Like what you read? Then do subscribe to the RSS Feed of this blog!</h4>
+            <a target="_blank" href="http://www.feedly.com/home#subscription/feed/http://blog.linweb.tk/rss.xml"><img src="/images/feedly.png"></a>
+        </div>
+    </div>
+
+    <div class='content-container'>
+
+
+
+
+
+<div class='post-contents'>
+	<h5 class='page-date'>11 May 2013</h5>
+	<h2 class='page-title'><a href="/2013/05/11/dropplets-a-cool-markdown-cms/">Dropplets - A Wicked Cool Markdown CMS</a></h2>
+	<div class='page-content'><p>I had been waiting for my exams to get over before I could plunge into the web world to discover or build something exciting. And I cam across <a href="http://dropplets.com">Dropplets</a>. It attracted me, intrigued me!</p>
+
+<p>I know I am quite biased towards databaseless lightweight CMSs. But Dropplets made quite an impression.</p>
+
+<p>Dropplets is a project by <a href="http://jason.sc/">Jason Schuller</a>. Jason is a wonderful Wordpress Theme Developer. In <a href="http://jason.sc/life-beyond-wordpress">one of his personal blog posts</a>, he argues how Wordpress is not the solution to everything. He feels that creativity is being lost due to the availability of readymade full featured themes. And this is the reason he started working on Dropplets.</p>
+
+<blockquote><p>Introducing Dropplets, a fresh platform dedicated to making blogging simple again. There's no database or confusing admins to worry about. Install in seconds, compose in markdown, then drag and drop to publish.</p></blockquote>
+
+<p>All you need is a working web server with PHP engine running on it. Installing it is also very easy. The documents claim it to be a 30 second install, and Dropplets does live up to this claim.</p>
+
+<p>All you need to do is download the <a href="https://github.com/circa75/dropplets">source from Github</a>, copy it to your web host directory, and you are good to go. However, if it's nginx your Web Host is using, and not Apache, you will need to make a few changes for the pretty links to work.</p>
+
+<p>If you want it in a separate domain, then add the following lines to the configuration:</p>
+
+<div class="highlight"><pre><code class="sh">   location / <span class="o">{</span>
+        index  dropplets/index.php index.html;
+        rewrite ^/<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/dropplets/index.php?filename<span class="o">=</span><span class="nv">$1</span> last;
+
+        <span class="c"># If the file exists as a static file serve it</span>
+        <span class="c"># directly without running all</span>
+        <span class="c"># the other rewite tests on it</span>
+        <span class="k">if</span> <span class="o">(</span>-f <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nb">break</span>;
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(</span>!-f <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nb">break</span>;
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    location /post <span class="o">{</span>
+        index index.php;
+    <span class="o">}</span>
+    location /dashboard <span class="o">{</span>
+        index index.php;
+    <span class="o">}</span>
+</code></pre></div>
+
+
+<p>And if it's a subdirectory, add the following lines to the configuration:</p>
+
+<div class="highlight"><pre><code class="sh">   location /dropplets <span class="o">{</span>
+        rewrite ^/dropplets/<span class="o">(</span>.*<span class="o">)</span><span class="nv">$ </span>/dropplets/index.php?filename<span class="o">=</span><span class="nv">$1</span> last;
+
+        <span class="c"># If the file exists as a static file serve it</span>
+        <span class="c"># directly without running all</span>
+        <span class="c"># the other rewite tests on it</span>
+        <span class="k">if</span> <span class="o">(</span>-f <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nb">break</span>;
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(</span>!-f <span class="nv">$request_filename</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nb">break</span>;
+        <span class="o">}</span>
+        <span class="o">}</span>
+
+    location /dropplets/post <span class="o">{</span>
+        index index.php;
+    <span class="o">}</span>
+
+    location /dropplets/dashboard <span class="o">{</span>
+        index index.php;
+    <span class="o">}</span>
+</code></pre></div>
+
+
+<p>Now open up the domain where you installed Dropplets on your browser. And this is what will come up.</p>
+
+<p><img src="/images/dropplets-a-cool-markdown-cms/install.jpg" alt="Installation" /></p>
+
+<p>You'll need to enter your admin email, twitter account, the blog name, a short description of the blog, admin password etc. It's pretty straightforward. Once you are happy with the typed in details, click on the big check button at the bottom of the screen.</p>
+
+<p>And you'll be greeted with the home page of the blog.</p>
+
+<p><img src="/images/dropplets-a-cool-markdown-cms/blog.jpg" alt="Blog" /></p>
+
+<p>The dashboard can be accessed by going to http://your-blog-url/dashboard/</p>
+
+<p><img src="/images/dropplets-a-cool-markdown-cms/dashboard.jpg" alt="Dashboard" /></p>
+
+<p>The dashboard is dead simple to use. There are three buttons on the top. One is to go to the blog homepage, another is for changing the settings, and the last one for changing themes. Dropplets comes with two inbuilt themes. Both are responsive.</p>
+
+<p>You need to create your blog posts in markdown format offline and just drag and drop them on the huge droplet in the center of the dashboard. Dropplets will automatically add the new posts to the blog.</p>
+
+<p>The settings option lets one inject custom styling and tracking codes. This might come handy if you are using an analytics solution.</p>
+
+<p>Even though proper documentation for building custom themes is yet not available, it'll be soon. Till then you can read the source and try to build one on your own.</p>
+
+<p>Dropplets is a breeze to use and it's lightweight nature will definitely attract users who just want a self-hosted blog without much hassle.</p>
+</div>
+	<div class='horizontal-divider'> </div>
+</div>
+
+	<div class='panel author' itemscope="" itemtype="http://schema.org/Person">
+        <div class='circular-img'><img class="author-img" itemprop="image" src="/images/sumit.jpg" alt="Sumit Sarkar"></div>
+        <h2><span itemprop="name">Sumit Sarkar</span></h2>
+        <h3><span itemprop="jobTitle">Designer &amp; Linux System Administrator</span></h3>
+        <p><span>Connect with the Author:<span> <a rel="me" name="google_profile" itemprop="url" href="https://plus.google.com/116690828010534377774?rel=author" target="_blank" title="Follow Me on Google+">Google+</a> | <a rel="me" name="twitter_profile" itemprop="url" href="https://twitter.com/sumitdurd3n" target="_blank" title="Follow Me on Twitter">Twitter</a></p>
+        <div itemprop="description">
+          <p>Sumit Sarkar is a Web Designer and a Linux Server Admin. He is extremely eager to learn new things and doing so everyday.</p>
+        </div>
+    </div>
+		      
+		</div>
+
+		
+		<div class="comment-container">
+			<div class="horizontal-divider"></div>
+			<div class="comment-system">		
+				<h4 class='comment-title'>Write your <span class='special'>comments</span> down here. The JavaScript should be turned on for this to work!</h4>
+	        	<a class="moot" data-label="Your feedback here..." href="http://api.moot.it/linweb/blog//2013/05/11/dropplets-a-cool-markdown-cms/"></a>
+			</div>
+		</div>
+
+	</div>
+  
+</body>
+</html>

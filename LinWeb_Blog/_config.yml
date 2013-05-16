@@ -1,0 +1,10 @@
+name: "LinWeb"
+description: "This is the offcial blog of LinWeb - the brainchild of Sumit"
+
+url: "http://blog.linweb.tk"
+
+paginate: 10
+
+markdown: rdiscount
+permalink: pretty
+pygments: true

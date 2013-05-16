@@ -1,0 +1,24 @@
+# SASS
+# ---------------------
+/sass/.sass-cache
+
+# GLOBAL IGNORES
+# ---------------------
+*.tmproj
+*.svn
+.svn
+*.pyc
+
+# OS X
+# ---------------------
+*.DS_Store
+
+# EXTERNAL DISKS
+# ---------------------
+.Spotlight-V100
+.Trashes
+
+# WINDOWS
+# ---------------------
+Thumbs.db
+Desktop.ini

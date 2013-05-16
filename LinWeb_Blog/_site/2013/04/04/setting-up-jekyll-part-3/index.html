@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0" />
+
+  <!-- (1) Moot look and feel -->
+  <link rel="stylesheet" href="http://cdn.moot.it/1.2.3/moot.css"/>
+
+  <title>LinWeb | Setting up Jekyll for Blogging - Part 3</title>
+
+  <meta name='robots' content='index, follow' />
+
+  
+  <meta name="description" content="This tutorial describes the different ways that can be employed to deploy a Jekyll powered website. However, I mainly emphasize on the method pertaining to Dropbox for hosting purposes." />
+  
+
+   
+  <meta name="tags" content="jekyll,setup,tutorial,part-3" />
+  
+
+
+  
+  <meta name="keywords" content="" />
+  
+
+  
+  <meta http-equiv="date" content="Thursday, 04  2013 00:00:00 GMT" />
+  
+
+  <!-- (1) Moot depends on jQuery v1.7 or greater -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <!-- (1) Moot client application -->
+  <script src="http://cdn.moot.it/1.2.3/moot.min.js"></script>
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+
+  <link rel="stylesheet" href="/stylesheets/blog.css" />
+  <!-- Piwik -->
+  <script type="text/javascript"> 
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.linweb.tk//";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 1]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+      g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+  </script>
+  <noscript><p><img src="http://analytics.linweb.tk/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+</head>
+<body>
+  <div class="container">
+    <div class='cover-page'>
+        <nav>
+            <ul class='inline-list no-bullet'>
+                <li><a href="http://blog.linweb.tk">Home</a></li>
+                <li><a href="http://blog.linweb.tk/archive">Archive</a></li>
+                <li><a href="http://blog.linweb.tk/contact">Contact</a></li>
+                <li><a href="http://blog.linweb.tk/offers">Offers</a></li>
+            </ul>
+        </nav>
+        <div class='blog-icon'>
+            <h1 class="icon-pencil"></h1>
+        </div>
+    </div>
+
+    <div class='colored-bar'>
+        <div class='bar1'></div>
+        <div class='bar2'></div>
+        <div class='bar3'></div>
+        <div class='bar4'></div>
+        <div class='bar5'></div>
+    </div>
+
+    <div class="message-window">
+        <div class="subscribe">
+            <h4>Like what you read? Then do subscribe to the RSS Feed of this blog!</h4>
+            <a target="_blank" href="http://www.feedly.com/home#subscription/feed/http://blog.linweb.tk/rss.xml"><img src="/images/feedly.png"></a>
+        </div>
+    </div>
+
+    <div class='content-container'>
+
+
+
+
+
+<div class='post-contents'>
+	<h5 class='page-date'>04 April 2013</h5>
+	<h2 class='page-title'><a href="/2013/04/04/setting-up-jekyll-part-3/">Setting up Jekyll for Blogging - Part 3</a></h2>
+	<div class='page-content'><div class='panel series'>
+    <h6>Posts of this series:</h6>
+    <ul class='no-bullet'>
+        <li><a href="/2013/03/30/setting-up-jekyll-part-1/">Installing Jekyll</a></li>
+        <li><a href="/2013/03/31/setting-up-jekyll-part-2/">Creating the template</a></li>
+        <li><a href="/2013/04/04/setting-up-jekyll-part-3/">Final Changes</a></li>
+    </ul>
+</div>
+
+
+<p>The third installment of the series deals with the deployment of the Jekyll website we built last time. However I added a little bit about some other static website generators too.</p>
+
+<!-- more -->
+
+
+<h4>Sections:</h4>
+
+<ol>
+    <li><a href="#basic">A basic idea</a></li>
+    <li><a href="#shared">Shared Hosting</a></li>
+    <li><a href="#vps">VPS</a></li>
+    <li><a href="#dropbox">Dropbox</a></li>
+    <li><a href="#dropboxapps">Dropbox Apps for Jekyll and Beyond</a></li>
+    <li><a href="#theend">The End</a></li>
+</ol>
+
+
+
+
+<h4><a name="basic">A basic idea about hosting</a></h4>
+
+
+<p>I feel it'll be really dumb to explain what hosting is. Simply saying, deployment is a way to make available the website to everyone through a proper domain name. Not a proper definition. Still it pretty much explains what we are going to do.</p>
+
+<p>I am mainly going to focus on the free ways to host your website. Not that I don't appreciate having a server, it's just that most people want free stuff. So do I. But I'll mention a couple of ways of hosting the Jekyll powered website which you might already be familiar with.</p>
+
+<h4><a name="shared">Shared Hosting</a></h4>
+
+
+<p>One of the cheapest ways is to buy a shared hosting plan. However, I have never really come across a shared hosting plan from any reputed company which provides only static file hosting. Since, you won't be needing anything other than FTP and a simple web server, the extra server end parsing and Database server is worthless for you. But if you find one that fits your purpose and your wallet, then go for it!</p>
+
+<h4><a name="vps">Virtual Private Server</a></h4>
+
+
+<p>Now this is my favorite! I am myself hosting all my websites, including client websites on a VPS. It's like owning a full fledged server but with some usage caps. It might seem like an overkill to some. Configuring a VPS to suit your needs is not the goal of this post. I'll simply state my configuration. You will find several tutorials on the internet regarding the setup procedure. I use nginX with caching for supercharged serving of pages. If that is the only website on your VPS, then I doubt even with quite a bit of traffic, you'll need more than 32MB RAM.</p>
+
+<h4><a name="dropbox">Dropbox</a></h4>
+
+
+<p>I already mentioned in the first post that one can host the website on Dropbox too. If you google, you'll find a lots of apps that make this easier for you. But, O believe in full control and some of those apps don't give you full control over your website.</p>
+
+<p>Hosting on Dropbox is extremely easy. But there are some pitfalls. You'll have to use relative links without the '/' ,i.e, root. Normally, in a web server, we can specify the root of a domain or a subdomain. But it's not the case with Dropbox. So, once you have edited all your links, all you have to do is create a directory and copy all the contents of <span class='word_highlight'>_site</span> directory in your local Jekyll system to that newly created folder.</p>
+
+<p>For domain settings, you'll have to setup a CNAME record in your domain settings and point it to the URL of the <span class="word_highlight">index.html</span> of your website. You can get the URL by sharing that file.</p>
+
+<p>Now all that is to be done is wait for a couple of hours for the DNS to get updated, and the site will be live. However, there are a couple of pitfalls. I am not sure but I've read in a couple of places that sites built this way don't have a good SEO ranking. I am not sure how true that is. If you find the truth behind this and do let me know!</p>
+
+<h4><a name="dropboxapps">Dropbox Apps for Jekyll and Beyond!</a></h4>
+
+
+<p>I am hoping that you did google for the various techniques of hosting Jekyll websites on Dropbox. And I bet something did come up regarding Dropbox Apps. There are infact a plethora of apps that can make things a lot easier for you. As a matter of fact, you might not need to even create a template! There are apps that provide readymade good looking themes. All you need to do is write posts in markdown. And some of those are not even using Jekyll as their engine. A short list of some of those apps:</p>
+
+<ul class='no-bullet'>
+    <li><a href="http://site44.com">site44</a></li>
+    <li><a href="http://scriptogr.am">scriptogr.am</a></li>
+    <li><a href="http://calepin.co">Calepin</a></li>
+    <li><a href="http://skrivr.com">Skrivr</a></li>
+</ul>
+
+
+<p><a href="http://site44.com">site44</a> is Jekyll dependent. It has a free plan and even paid plans. They even provide a ".site44.com" subdomain. Password protection is allowed on this domain. However, custom domains do not allow this. However, the bandwidth cap is disappointing. The free plan allows only 100MB/month data transfer. However, if you expect a relatively low traffic, it might suit your purpose.</p>
+
+<p><a href="http://calepin.co">Calepin</a> is a hosted blog that automatically syncs with the Markdown files you store in Dropbox. Pretty much the same as all the apps in the list. However, it's open source. Their codebase is hosted on <a href="https://github.com/jokull/calepin">Github</a> It is evident from their source that they do not use Jekyll as their engine.
+There are some pitfalls too. They donot allow custom themes. And there's no guarantee that they will remain free forever.</p>
+
+<p><a href="http://skrivr.com">Skrivr</a> is quite similar to Calepin. So, I won't describe it further.</p>
+
+<p><a href="http://scriptogr.am">scriptogr.am</a> is one app I just fell in love with. Even though they have officially launched on September 05, 2012, their website, still says the app is in beta. But I must say, it's an app beautifully done! Their default theme looks clean and elegant. There are quite a number of themes to choose from. And one has the added advantage of wditing the theme's HTML and CSS. They have opened up their API for developers too. There is provision for submitting apps.</p>
+
+<p>I have been fiddling with it since this morning. And it's very simple to setup and use. Once you are done clinking on the big orange button <span class="word_highlight">Connect</span> on their home page and allowed the app access to your Dropbox account, you simply have to open up <a href="http://scriptogr.am">scriptogr.am</a> and edit the posts right from the AJAX powered dashboard. Even the dashboard looks beautiful! Of all the dashboards I've ever seen, their's is the one that took my heart away.</p>
+
+<p><img src="/images/setting-up-jekyll-for-blogging-part-3/scriptogram_dashboard.jpg"></p>
+
+<p>The CSS and HTML editor are readily available in the <span class="word_highlight">Tools</span> section of the dashboard. And you get a live preview of the changes!</p>
+
+<p><img src="/images/setting-up-jekyll-for-blogging-part-3/scriptogram_css_editor.jpg"></p>
+
+<p>Adding, editing and delting posts is also very easy. The options are available in the menu.</p>
+
+<p>Finally, the provision for adding custom domain is present in the <span class="word_highlight">Settings</span> page. The following is a modal window that helps in setting up the custom domain.</p>
+
+<p><img src="/images/setting-up-jekyll-for-blogging-part-3/scriptogram_custom_domain.jpg"></p>
+
+<p>I have setup a live scriptogr.am website for demo purposes.</p>
+
+<p><a class='flat_button' href="http://scriptogram.linweb.tk/">Demo</a></p>
+
+<h4><a name="theend">The End</a></h4>
+
+
+<p>We are done with a static blog creation. I hope all the information will help you in building up a small lightweight blog in avery short time and let that creative beast inside you work on live things without worrying about the languages you don't know.</p>
+
+<p>Blogging has never been this easier.</p>
+</div>
+	<div class='horizontal-divider'> </div>
+</div>
+
+	<div class='panel author' itemscope="" itemtype="http://schema.org/Person">
+        <div class='circular-img'><img class="author-img" itemprop="image" src="/images/sumit.jpg" alt="Sumit Sarkar"></div>
+        <h2><span itemprop="name">Sumit Sarkar</span></h2>
+        <h3><span itemprop="jobTitle">Designer &amp; Linux System Administrator</span></h3>
+        <p><span>Connect with the Author:<span> <a rel="me" name="google_profile" itemprop="url" href="https://plus.google.com/116690828010534377774?rel=author" target="_blank" title="Follow Me on Google+">Google+</a> | <a rel="me" name="twitter_profile" itemprop="url" href="https://twitter.com/sumitdurd3n" target="_blank" title="Follow Me on Twitter">Twitter</a></p>
+        <div itemprop="description">
+          <p>Sumit Sarkar is a Web Designer and a Linux Server Admin. He is extremely eager to learn new things and doing so everyday.</p>
+        </div>
+    </div>
+		      
+		</div>
+
+		
+		<div class="comment-container">
+			<div class="horizontal-divider"></div>
+			<div class="comment-system">		
+				<h4 class='comment-title'>Write your <span class='special'>comments</span> down here. The JavaScript should be turned on for this to work!</h4>
+	        	<a class="moot" data-label="Your feedback here..." href="http://api.moot.it/linweb/blog//2013/04/04/setting-up-jekyll-part-3/"></a>
+			</div>
+		</div>
+
+	</div>
+  
+</body>
+</html>

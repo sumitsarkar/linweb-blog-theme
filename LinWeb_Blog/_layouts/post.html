@@ -1,0 +1,13 @@
+{% include headerpost.html %}
+
+
+
+<div class='post-contents'>
+	<h5 class='page-date'>{{ page.date |  date: "%d %B %Y"}}</h5>
+	<h2 class='page-title'><a href="{{ page.url }}">{{ page.title }}</a></h2>
+	<div class='page-content'>{{ content }}</div>
+	<div class='horizontal-divider'> </div>
+</div>
+
+{% include author-info.html %}
+{% include footerpost.html %}

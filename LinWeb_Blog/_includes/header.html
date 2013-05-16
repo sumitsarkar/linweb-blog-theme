@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>LinWeb | {{ page.title }}</title>
+
+  <meta name='robots' content='index, follow' />
+
+  {% if page.description %}
+  <meta name="description" content="{{page.description}}" />
+  {% else %}
+  <meta name="description" content="{{site.description}}" />
+  {% endif %}
+
+   {% if page.tags %}
+  <meta name="tags" content="{{page.tags}}" />
+  {% endif %}
+
+
+  {% if page.categories %}
+  <meta name="keywords" content="{{page.categories | join: ','}}" />
+  {% else %}
+  <meta name="keywords" content="{{site.keywords | join: ','}}" />
+  {% endif %}
+
+  {% if page.date %}
+  <meta http-equiv="date" content="{{page.date |date: '%A, %d  %Y %H:%M:%S GMT'}}" />
+  {% endif %}
+
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+
+  <link rel="stylesheet" href="/stylesheets/blog.css" />
+
+  <!-- Piwik -->
+  <script type="text/javascript"> 
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.linweb.tk//";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 1]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+      g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+  </script>
+  <noscript><p><img src="http://analytics.linweb.tk/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
+  
+</head>
+<body>
+    <div class="container">
+        <div class='cover-page'>
+            <nav>
+                <ul class='inline-list no-bullet'>
+                    <li><a href="{{ site.url }}">Home</a></li>
+                    <li><a href="{{ site.url }}/archive">Archive</a></li>
+                    <li><a href="{{ site.url }}/contact">Contact</a></li>
+                    <li><a href="{{ site.url }}/offers">Offers</a></li>
+                </ul>
+            </nav>
+            <div class='blog-icon'>
+                <h1 class="icon-pencil"></h1>
+            </div>
+        </div>
+        <div class='colored-bar'>
+            <div class='bar1'></div>
+            <div class='bar2'></div>
+            <div class='bar3'></div>
+            <div class='bar4'></div>
+            <div class='bar5'></div>
+        </div>
+
+        <div class="message-window">
+            <div class="subscribe">
+                <h4>Like what you read? Then do subscribe to the RSS Feed of this blog!</h4>
+                <a target="_blank" href="http://www.feedly.com/home#subscription/feed/http://blog.linweb.tk/rss.xml"><img src="/images/feedly.png"></a>
+            </div>
+        </div>     
+        
+        <div class='content-container'>
+

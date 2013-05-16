@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0" />
+
+  <!-- (1) Moot look and feel -->
+  <link rel="stylesheet" href="http://cdn.moot.it/1.2.3/moot.css"/>
+
+  <title>LinWeb | Setting up Jekyll for Blogging - Part 1</title>
+
+  <meta name='robots' content='index, follow' />
+
+  
+  <meta name="description" content="This is the first part of the beginning of the tutorial and here we'll learn how to install Jekyll on our computer." />
+  
+
+   
+  <meta name="tags" content="jekyll,setup,tutorial,part-1" />
+  
+
+
+  
+  <meta name="keywords" content="" />
+  
+
+  
+  <meta http-equiv="date" content="Saturday, 30  2013 00:00:00 GMT" />
+  
+
+  <!-- (1) Moot depends on jQuery v1.7 or greater -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <!-- (1) Moot client application -->
+  <script src="http://cdn.moot.it/1.2.3/moot.min.js"></script>
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+
+  <link rel="stylesheet" href="/stylesheets/blog.css" />
+  <!-- Piwik -->
+  <script type="text/javascript"> 
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.linweb.tk//";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 1]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+      g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+  </script>
+  <noscript><p><img src="http://analytics.linweb.tk/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+</head>
+<body>
+  <div class="container">
+    <div class='cover-page'>
+        <nav>
+            <ul class='inline-list no-bullet'>
+                <li><a href="http://blog.linweb.tk">Home</a></li>
+                <li><a href="http://blog.linweb.tk/archive">Archive</a></li>
+                <li><a href="http://blog.linweb.tk/contact">Contact</a></li>
+                <li><a href="http://blog.linweb.tk/offers">Offers</a></li>
+            </ul>
+        </nav>
+        <div class='blog-icon'>
+            <h1 class="icon-pencil"></h1>
+        </div>
+    </div>
+
+    <div class='colored-bar'>
+        <div class='bar1'></div>
+        <div class='bar2'></div>
+        <div class='bar3'></div>
+        <div class='bar4'></div>
+        <div class='bar5'></div>
+    </div>
+
+    <div class="message-window">
+        <div class="subscribe">
+            <h4>Like what you read? Then do subscribe to the RSS Feed of this blog!</h4>
+            <a target="_blank" href="http://www.feedly.com/home#subscription/feed/http://blog.linweb.tk/rss.xml"><img src="/images/feedly.png"></a>
+        </div>
+    </div>
+
+    <div class='content-container'>
+
+
+
+
+
+<div class='post-contents'>
+	<h5 class='page-date'>30 March 2013</h5>
+	<h2 class='page-title'><a href="/2013/03/30/setting-up-jekyll-part-1/">Setting up Jekyll for Blogging - Part 1</a></h2>
+	<div class='page-content'><p>I had promised tutorials regarding setting up of <a href="http://jekyllrb.com">Jekyll</a> last time. Since this is a pretty big task, I have divided this into three parts:</p>
+
+<div class='panel series'>
+    <h6>Posts of this series:</h6>
+    <ul class='no-bullet'>
+        <li><a href="/2013/03/30/setting-up-jekyll-part-1/">Installing Jekyll</a></li>
+        <li><a href="/2013/03/31/setting-up-jekyll-part-2/">Creating the template</a></li>
+        <li><a href="/2013/04/04/setting-up-jekyll-part-3/">Final Changes</a></li>
+    </ul>
+</div>
+
+
+<p>There are various tutorials on how to setup Jekyll for building a static website. However, this one is going to be a bit different. I will be mainly emphasizing on creating a working template in this series. And my development server is a Linux box (Debian based OS). So all the shell commands I type in are tested run on Debain system.</p>
+
+<p>Let's start with it then.</p>
+
+<!-- more -->
+
+
+<p>Jekyll is Ruby powered. So, first we need to install Ruby on our system. The first thing we need to do is fore up the terminal and type in the following in sh:</p>
+
+<div class="highlight"><pre><code class="sh">sudo apt-get install ruby1.9.1-dev
+</code></pre></div>
+
+
+<p>The best way to isntall Jekyll is via RubyGems.</p>
+
+<div class="highlight"><pre><code class="sh">sudo gem install jekyll
+</code></pre></div>
+
+
+<p>The above command automatically installs <span class='word_highlight'>directory_watcher</span>, <span class='word_highlight'>liquid</span>, <span class='word_highlight'>maruku</span> and <span class='word_highlight'>classifier</span>.</p>
+
+<p>One may also install <span class='word_highlight'>RDiscount</span> instead of <span class='word_highlight'>Maruku</span> for markdown. For that,</p>
+
+<div class="highlight"><pre><code class="sh">sudo gem install rdiscount
+</code></pre></div>
+
+
+<p>You might need code highlighting some day in your blog posts. For that Jekyll has support for a Python based code highlighter - <span class='word_highlight'>Pygments</span>. There are various methods to install <span class='word_highlight'>Pygments</span>. If you prefer <span class='word_highlight'>easy_install</span>,</p>
+
+<div class="highlight"><pre><code class="sh">sudo easy_install Pygments
+</code></pre></div>
+
+
+<p>One may also use aptitude for its installation.</p>
+
+<div class="highlight"><pre><code class="sh">sudo apt-get python-pygments
+</code></pre></div>
+
+
+<p>And that's it! You have successfully installed Jekyll on your system.</p>
+</div>
+	<div class='horizontal-divider'> </div>
+</div>
+
+	<div class='panel author' itemscope="" itemtype="http://schema.org/Person">
+        <div class='circular-img'><img class="author-img" itemprop="image" src="/images/sumit.jpg" alt="Sumit Sarkar"></div>
+        <h2><span itemprop="name">Sumit Sarkar</span></h2>
+        <h3><span itemprop="jobTitle">Designer &amp; Linux System Administrator</span></h3>
+        <p><span>Connect with the Author:<span> <a rel="me" name="google_profile" itemprop="url" href="https://plus.google.com/116690828010534377774?rel=author" target="_blank" title="Follow Me on Google+">Google+</a> | <a rel="me" name="twitter_profile" itemprop="url" href="https://twitter.com/sumitdurd3n" target="_blank" title="Follow Me on Twitter">Twitter</a></p>
+        <div itemprop="description">
+          <p>Sumit Sarkar is a Web Designer and a Linux Server Admin. He is extremely eager to learn new things and doing so everyday.</p>
+        </div>
+    </div>
+		      
+		</div>
+
+		
+		<div class="comment-container">
+			<div class="horizontal-divider"></div>
+			<div class="comment-system">		
+				<h4 class='comment-title'>Write your <span class='special'>comments</span> down here. The JavaScript should be turned on for this to work!</h4>
+	        	<a class="moot" data-label="Your feedback here..." href="http://api.moot.it/linweb/blog//2013/03/30/setting-up-jekyll-part-1/"></a>
+			</div>
+		</div>
+
+	</div>
+  
+</body>
+</html>

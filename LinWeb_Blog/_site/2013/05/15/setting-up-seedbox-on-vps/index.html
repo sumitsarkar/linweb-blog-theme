@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0" />
+
+  <!-- (1) Moot look and feel -->
+  <link rel="stylesheet" href="http://cdn.moot.it/1.2.3/moot.css"/>
+
+  <title>LinWeb | Setting up Seedbox - The Easy Way</title>
+
+  <meta name='robots' content='index, follow' />
+
+  
+  <meta name="description" content="Even with the stigma attached to torrents, people love it. This is a nifty tutorial to help you set up a seedbox on your low end linux box." />
+  
+
+   
+  <meta name="tags" content="seedbox,debian,simple,deluge" />
+  
+
+
+  
+  <meta name="keywords" content="" />
+  
+
+  
+  <meta http-equiv="date" content="Wednesday, 15  2013 00:00:00 GMT" />
+  
+
+  <!-- (1) Moot depends on jQuery v1.7 or greater -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <!-- (1) Moot client application -->
+  <script src="http://cdn.moot.it/1.2.3/moot.min.js"></script>
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+
+  <link rel="stylesheet" href="/stylesheets/blog.css" />
+  <!-- Piwik -->
+  <script type="text/javascript"> 
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.linweb.tk//";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 1]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+      g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+
+  </script>
+  <noscript><p><img src="http://analytics.linweb.tk/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+</head>
+<body>
+  <div class="container">
+    <div class='cover-page'>
+        <nav>
+            <ul class='inline-list no-bullet'>
+                <li><a href="http://blog.linweb.tk">Home</a></li>
+                <li><a href="http://blog.linweb.tk/archive">Archive</a></li>
+                <li><a href="http://blog.linweb.tk/contact">Contact</a></li>
+                <li><a href="http://blog.linweb.tk/offers">Offers</a></li>
+            </ul>
+        </nav>
+        <div class='blog-icon'>
+            <h1 class="icon-pencil"></h1>
+        </div>
+    </div>
+
+    <div class='colored-bar'>
+        <div class='bar1'></div>
+        <div class='bar2'></div>
+        <div class='bar3'></div>
+        <div class='bar4'></div>
+        <div class='bar5'></div>
+    </div>
+
+    <div class="message-window">
+        <div class="subscribe">
+            <h4>Like what you read? Then do subscribe to the RSS Feed of this blog!</h4>
+            <a target="_blank" href="http://www.feedly.com/home#subscription/feed/http://blog.linweb.tk/rss.xml"><img src="/images/feedly.png"></a>
+        </div>
+    </div>
+
+    <div class='content-container'>
+
+
+
+
+
+<div class='post-contents'>
+	<h5 class='page-date'>15 May 2013</h5>
+	<h2 class='page-title'><a href="/2013/05/15/setting-up-seedbox-on-vps/">Setting up Seedbox - The Easy Way</a></h2>
+	<div class='page-content'><p>I was pissed. I was pissed at the sorry ass speed of the broadband connection I have at home. I was sick and tired of the bottlenecks the ISP had applied on my connection. The speed is an abomination to DSL lines if compared to any first world country. But I can't really complain about it in a third world country. Moreover, I have been noticing really bad speeds (0.1KBps to 4KBps) whenever I am downloading files using torrent (not illegal ones!).</p>
+
+<p>I tried almost every trick in the book to evade the bottlenecks. Nothing seemed to work. I encrypted my data stream, changed the ports, routed the streams to different ports on my router. I even tried to obsfuse the headers of my data streams to fool my ISP. It didn't work. Or maybe I was doing something wrong. Eventually I just laid down my hypothetical arms against this unfair practice of my ISP.</p>
+
+<p>But last night I was browsing around the web, when it suddenly hit me. . . I can still browse and download at good speeds. So, why can't I download files directly instead of getting bottlenecked by my ISP and wait for a 400MB dile to be downloaded in a week?</p>
+
+<p>Yes I can!</p>
+
+<p>But how do I get files as direct downloads? There are a couple of websites who allow us to get the files directly instead of getting them through torrents. But almost all of them are spam. So, the only way is to download them using torrent someplace else and then get the downloaded file to my computer with my normal speed.</p>
+
+<h4>All Hail the Seedbox</h4>
+
+<blockquote><p>Seedbox is a private server used for thr uploading and downloading
+of digital files.</p>
+
+<pre><code>                                          -Wikipedia
+</code></pre></blockquote>
+
+<p>Think of a seedbox same as your computer downloading files using BitTorrent protocol. The only difference being, it's only job is to download files. Nothing else. And it probably has much much better network connection. Once the downloads are complete, you can simply download the files from the seedbox to your personal computer or smartphone or tablet, whatever you want.</p>
+
+<p>Seedboxes genrally have download and upload speeds of 100Mbit/s (ie. 12.5MB/s). So you can download a 1GB file in about 82 seconds. But since torrent speeds depends on peers, you can't say how much ime it'll take to download. But I bet it'll definitely be faster than your home network connection.</p>
+
+<p>So, how do we go about it?</p>
+
+<p>First I had to choose a server. The one I am hosting my blog on, allows torrents, game servers and almost anything as long as I do not breach fair usage policy. And it's very fast. Average speed is over 40MByte/s. But I didn't want to screw with a production server. So, I chose an abandoned VPS of mine. I dusted it off by reimaging it first to get a fresh installation (I don't even remember what I had done on it last time I logged into it).</p>
+
+<p>Now I needed something super easy to set up. I use <a href="http://libtorrent.rakshasa.no">rtorrent</a> on my home computer. But installing gc++, and other libraries and compiling it on a 128MB server without any burst RAM didn't seem a good idea to me. I wanted something much easier.</p>
+
+<h4>Deluge comes to the rescue</h4>
+
+<p><a href="http://deluge-torrent.org/%E2%80%8E">Deluge</a> is a standalone torrent client and server that can be setup on Linux systems. I use it frequently on my home computer. And it is also used widely on seedboxes. Therefore, Deluge was the choice I stood out with.</p>
+
+<h4>Setup procedure</h4>
+
+<p>Once I had a fresh installation (Debian Squeeze) on the VPS, I ssh'ed into it  and added the dotdeb repository to <span class='word_highlight'>/etc/apt/sources.list</span>.</p>
+
+<div class="highlight"><pre><code class="sh"><span class="nb">echo</span> <span class="s2">&quot;deb http://packages.dotdeb.org squeeze all&quot;</span> &gt;&gt; /etc/apt/sources.list
+<span class="nb">echo</span> <span class="s2">&quot;deb-src http://packages.dotdeb.org squeeze all&quot;</span> &gt;&gt; /etc/apt/sources.list
+wget -q -O - http://www.dotdeb.org/dotdeb.gpg | apt-key add -
+</code></pre></div>
+
+
+<p>The I entered the following commands. You may skip them if you want. But it removes most of the stuff you won't need. Ignore the lines starting with <span class='word_highlight'>#</span>. They are just comments to help you know what the command following them does.</p>
+
+<div class="highlight"><pre><code class="sh"><span class="c"># Update time zone</span>
+dpkg-reconfigure tzdata
+
+<span class="c"># Some Debain systems have portmap installed. We don&#39;t need it.</span>
+apt-get remove portmap
+
+<span class="c"># rsyslogd allocates approximately 30MB on OpenVZ system.</span>
+<span class="c"># I couldn&#39;t afford losing so much memory on a 128MB server.</span>
+apt-get remove rsyslog
+
+<span class="c"># Since I&#39;ll be using the lightweight nginx server, I won&#39;t need apache</span>
+apt-get remove apache2
+
+<span class="c"># There&#39;s no need to have a DNS server running</span>
+apt-get remove bind9
+
+<span class="c"># Samba is for file sharing on networks. I didn&#39;t need it either.</span>
+apt-get remove samba
+
+<span class="c"># Sendmail is required for mail servers. Not required for my purpose</span>
+apt-get remove sendmail
+
+<span class="c"># Nscd is a daemon that provides a cache for the most common name </span>
+<span class="c"># service requests. </span>
+apt-get remove nscd
+
+<span class="c"># Time to update and upgrade the system</span>
+apt-get -q -y update
+apt-get -q -y upgrade
+
+<span class="c"># Install dash. Smaller than bash but feature-rich</span>
+apt-get install dash
+rm -f /bin/sh
+ln -s dash /bin/sh
+
+<span class="c"># I prefer nano over vim </span>
+apt-get install nano
+
+<span class="c"># Useful for veiwing running processes</span>
+apt-get install htop
+
+<span class="c"># Midnight Commander is a very powerful text based file manager.</span>
+<span class="c"># Who knows one day you might need it.</span>
+apt-get install mc
+
+<span class="c"># You might not need it. But I do</span>
+apt-get install iotop
+
+<span class="c"># To check where all your network speed is going</span>
+apt-get install iftop
+
+<span class="c"># Install syslogd. This easts much less memory than rsyslogd</span>
+apt-get install inetutils-syslogd
+
+<span class="c">#Let&#39;s remove any left out packages not needed anymore</span>
+apt-get autoremove
+
+<span class="c"># Let&#39;s clean up the apt cache</span>
+apt-get autoclean
+</code></pre></div>
+
+
+<p>Alright! That was quite a lot of installing and removing. Now that I had a optimal system, I needed to install the basic packages for building the seedbox.</p>
+
+<p>As I said before I would be installing Deluge, some might be tempted to just do <span class="word_highlight">apt-get install deluge</span>. DO NOT DO THAT!</p>
+
+<p>This will install a lot of xwindow packages you are not going to need. A seedbox should be headless. I am trying to build a seedbox which is lightweight. This command will install a lot of packages we won't need. So, follow my lead here.</p>
+
+<div class="highlight"><pre><code class="sh">apt-get install deluge-common deluged deluge-web deluge-console
+</code></pre></div>
+
+
+<p><span class='word_highlight'>deluge-common</span> will install the base packages for deluge and <span class='word_highlight'>deluged</span> will install the deluge daemon.</p>
+
+<p><span class='word_highlight'>deluge-web</span> is for providing us a nice web based GUI so that we may control it from wherever the hell we want.</p>
+
+<p><span class='word_highlight'>deluge-console</span> is pretty explanatory itself. It gives us a console based GUI to see what is happening and control deluge configuration from it.</p>
+
+<p>Let's fire up the deluge daemon</p>
+
+<div class="highlight"><pre><code class="sh">deluged
+</code></pre></div>
+
+
+<p>Now I had two options. I could either connect to the server using a GTK GUI from my home computer or use the Web based GUI to add torrents. I chose the latter.</p>
+
+<ol>
+<li><strong>GTK GUI</strong> :</li>
+</ol>
+
+
+<p>First you need to add authentication on the server. Use the follwing command:</p>
+
+<div class="highlight"><pre><code class="sh"><span class="nb">echo</span> <span class="s2">&quot;username:password:10&quot;</span> &gt;&gt; ~/.config/deluge/auth
+</code></pre></div>
+
+
+<p>Then you need to configure the server to allow remote connections to it. For that you need to start up the deluge-console.</p>
+
+<div class="highlight"><pre><code class="sh">deluge-console
+</code></pre></div>
+
+
+<p>A console based GUI will show up.</p>
+
+<p><img src="/images/setting-up-seedbox-on-vps/deluge-console.jpg" alt="deluge-console" /></p>
+
+<p>Type in the following to allow remote connections.</p>
+
+<div class="highlight"><pre><code class="sh">config -s allow_remote True
+</code></pre></div>
+
+
+<p>Now, install deluge client on the home system. Start the deluge client and open prefernces. In the Interface tab, <em>Uncheck Enable Class Mode</em> and restart the client.
+Now open Connection Manager and enter the server IP, authentication credentials you just used a while ago and leave the port as it is and hit connect. And you are good to go!</p>
+
+<ol>
+<li><strong>Web GUI</strong></li>
+</ol>
+
+
+<p>Fire up the deluge-console.</p>
+
+<div class="highlight"><pre><code class="sh">deluge-console
+</code></pre></div>
+
+
+<p>Once the console GUI shows up, type in the following command. This command will enable the Web based GUI which we installed while installing deluged and deluge-console.</p>
+
+<div class="highlight"><pre><code class="sh">plugin -e WebUi
+</code></pre></div>
+
+
+<p>Now open up a browser and type in your server IP address followed by <span class="word_highlight">:8112</span>, that is, the port address of the WebUi.</p>
+
+<p>example : 66.66.66.66:8112</p>
+
+<p>You'll be greeted with the WebUi. The default password is <span class="word_highlight">deluge</span>. You would want to change the default password.</p>
+
+<p><img src="/images/setting-up-seedbox-on-vps/webui.jpg" alt="Deluge WebUi" /></p>
+
+<p>The rest of the task is pretty easy. Adding torrents, starting and pausing downloads etc can be done from the Web GUI itself. Just click around a little bit till you get comfortable with the UI.</p>
+
+<h4>The Important Part</h4>
+
+<p>I hope you have downloaded some file by now (hopefully not illegal). Now you need to get it on your computer. For that I used nginx to host the downloaded file.</p>
+
+<p>Let us install nginx</p>
+
+<div class="highlight"><pre><code class="sh">apt-get install nginx
+</code></pre></div>
+
+
+<p>A default configuration file will automatically be created in <span class='word_highlight'>/etc/nginx/sites-available/default</span>. I'll not be using a domain name for this task. So, I'll edit the default configuration file.</p>
+
+<p>We'll edit it to point to the directory where we downloaded the torrent files. Now you might have selected a default download folder in the preferences in the Web GUI. I named it <span class='word_highlight'>torrents</span> and it's in my root directory.</p>
+
+<div class="highlight"><pre><code class="sh">nano /etc/nginx/sites-available/default
+</code></pre></div>
+
+
+<p>Contents of default configuration file</p>
+
+<div class="highlight"><pre><code class="sh">server <span class="o">{</span>
+        listen 80;
+        root /root/torrents/;
+        index index.html index.htm index.php;
+        client_max_body_size 32m;
+
+        access_log  /root/access.log;
+        error_log  /root/error.log;
+<span class="o">}</span>
+</code></pre></div>
+
+
+<p>Restart the nginx daemon</p>
+
+<div class="highlight"><pre><code class="sh">/etc/init.d/nginx restart
+</code></pre></div>
+
+
+<p>That's it! We are setup.</p>
+
+<p>Now when the download is complete, all we need to do is point our download manager to the url of the file. Let's assume the server IP is 66.66.66.66 and the filename is <span class='word_highlight'>abc.pdf</span>.</p>
+
+<p>So, the url of the file will be <span class='word_highlight'>http://66.66.66.66/abc.pdf</span></p>
+
+<p><img src="/images/setting-up-seedbox-on-vps/download.jpg" alt="Downloading to home computer" /></p>
+
+<p>Now, I have a working seedbox. All I need to take care of is the bandwidth. It can be controlled by limiting the download and upload speed from the WebUi. After all services were running, the memory usage on my VPS was approximately 55MB.</p>
+
+<p>This is how I evade the torrent restrictions (which I think is there. I am not sure if I am right) from my ISP. Feel free to tell me how you evade torrent restrcitions from your ISP in the comments.</p>
+</div>
+	<div class='horizontal-divider'> </div>
+</div>
+
+	<div class='panel author' itemscope="" itemtype="http://schema.org/Person">
+        <div class='circular-img'><img class="author-img" itemprop="image" src="/images/sumit.jpg" alt="Sumit Sarkar"></div>
+        <h2><span itemprop="name">Sumit Sarkar</span></h2>
+        <h3><span itemprop="jobTitle">Designer &amp; Linux System Administrator</span></h3>
+        <p><span>Connect with the Author:<span> <a rel="me" name="google_profile" itemprop="url" href="https://plus.google.com/116690828010534377774?rel=author" target="_blank" title="Follow Me on Google+">Google+</a> | <a rel="me" name="twitter_profile" itemprop="url" href="https://twitter.com/sumitdurd3n" target="_blank" title="Follow Me on Twitter">Twitter</a></p>
+        <div itemprop="description">
+          <p>Sumit Sarkar is a Web Designer and a Linux Server Admin. He is extremely eager to learn new things and doing so everyday.</p>
+        </div>
+    </div>
+		      
+		</div>
+
+		
+		<div class="comment-container">
+			<div class="horizontal-divider"></div>
+			<div class="comment-system">		
+				<h4 class='comment-title'>Write your <span class='special'>comments</span> down here. The JavaScript should be turned on for this to work!</h4>
+	        	<a class="moot" data-label="Your feedback here..." href="http://api.moot.it/linweb/blog//2013/05/15/setting-up-seedbox-on-vps/"></a>
+			</div>
+		</div>
+
+	</div>
+  
+</body>
+</html>
